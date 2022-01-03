@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
+.App{
+    width: 50%;
+    height: 50%;
+   
+}
+.page{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+/* Global variables */
+
+
+/* Reset */
+/* remove padding, margin , and some other things from everything(body, p, ul ,li, a, h1-6) */
+img{
+    height: 13em;
+    /* width: 30em; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* Base Styles */
+/*  set font family, size, and other things in which other class calculate their relative styles from */
+
+
+/* Styles for Mobiles Phone */
+@media screen and (max-width: 620px){
+    .App {
+        width: 80%;
+        /* height: 50%; */
+        /* background-color: lightseagreen; */
+    }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/*  Styles for Tablets, and laptops > 620px */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
+/* Styles for ......> 960px */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+/*  Styles fro Desktop ...... > 11150px */
+
+

@@ -1,0 +1,11 @@
+.foundPlacesCard{
+    /* background-color: lightblue; */
+    border-bottom: 1px solid rgb(15, 119, 138);
+    margin: 1em 0 0 0;
+    padding: 0.5em 0 0.5em 0 ;
+}
+
+.foundPlacesCard p {
+    margin: 0;
+    padding: 0;
+}
