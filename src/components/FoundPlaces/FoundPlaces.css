@@ -1,8 +1,15 @@
 .foundPlacesCard{
-    /* background-color: lightblue; */
-    border-bottom: 1px solid rgb(15, 119, 138);
+    background-color: rgb(227, 237, 239);
+    /* border-bottom: 1px solid rgb(15, 119, 138); */
     margin: 1em 0 0 0;
     padding: 0.5em 0 0.5em 0 ;
+    border-radius: 5px;
+    /* box-shadow: 1px 1px 1px 1px cadetblue; */
+}
+
+.foundPlacesCard:hover{
+    cursor: pointer;
+    background-color: rgb(235, 243, 245);
 }
 
 .foundPlacesCard p {

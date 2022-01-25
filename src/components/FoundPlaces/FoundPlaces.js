@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CustomButton from '../CustomButton/CustomButton';
 
 import Container from 'react-bootstrap/Container';
@@ -6,24 +7,28 @@ import Col from 'react-bootstrap/Col';
 
 import './FoundPlaces.css'
 
-const FoundPlaces = () => {
+const FoundPlaces = ({location, freeSpaces, cost}) => {
     return (
         <div className='foundPlacesCard'>
             <Container>
                 <Row>
                     <Col>
                         <div>
-                            <p>Polwieska</p>
-                            <p>61-001 Poznan</p>
+                            <p>{location}</p>
+                            <p>free-spaces: {freeSpaces}</p>
                         </div>
                     </Col>
                     <Col>
                         <div>
-                            <p>2.5km</p>
+                            <p>{cost}PLN</p>
                             <p>5min</p>
                         </div>
                     </Col>
-                    <Col><CustomButton buttonText='Book' /></Col>
+                    <Col>
+                    <Link to='/payment'>
+                        <CustomButton buttonText='Book' />
+                    </Link>
+                    </Col>
                 </Row>
             </Container>
         </div>

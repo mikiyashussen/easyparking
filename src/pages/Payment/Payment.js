@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
 
@@ -7,33 +9,35 @@ import Col from 'react-bootstrap/Col';
 
 import carLogo from  '../../car.png'
 
-const Details = () => {
+const Payment = () => {
     return (
         <div className='page'>
             <img src={carLogo}  alt='car'/>
              <p style={{color: '#3C8CBF', fontWeight: '600', fontSize: '1.5em'}}>
-                Please fill in the following details</p> 
+                Finish up booking...</p> 
             <Container className='page'>
+                {/* needs a whole better approach accepting payment details */}
                 <Row>
-                    <Col><CustomInput inputText='Full Name' /></Col>
+                    <Col><CustomInput inputText='Card Holder' /></Col>
                 </Row>
                 <Row>
-                    <Col><CustomInput inputText='Email' /></Col>
-                </Row>
-                <Row>
-                    <Col><CustomInput inputText='Car Plate' /></Col>
+                    <Col><CustomInput inputText='Card Number' /></Col>
                 </Row>
                  {/* needs better implementation of time selection here */}
                 <Row>
-                    <Col><CustomInput inputText='From' /></Col>
-                    <Col><CustomInput inputText='To' /></Col>
+                    <Col><CustomInput inputText='expiry date' /></Col>
+                    <Col><CustomInput inputText='cvv' /></Col>
                 </Row>
                 <Row>
-                    <Col><CustomButton buttonText='Next' /></Col>
+                    <Col>
+                    <Link to='/details'>
+                        <CustomButton buttonText='Confirm' /> 
+                    </Link>
+                   </Col>
                 </Row>
             </Container>
         </div>
     )
 }
 
-export default Details
+export default Payment
