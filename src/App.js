@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import SignIn from './pages/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
 import Home from './pages/Home/Home';
 import Details from  './pages/Details/Details'
 import Locations from './pages/Locations/Locations';
@@ -9,6 +11,7 @@ import Payment from './pages/Payment/Payment';
 
 
 import './App.css';
+import Confirmation from './pages/Confirmation/Confirmation';
 // to dos
   /*
     1. find better font style
@@ -28,12 +31,13 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      locations: {}
+      userLocation: {}
     }
   }
 
   getLocations = (locations) => {
-    this.setState({locations: locations})
+    console.log('locations', locations)
+    this.setState({userLocation: locations})
   }
 
   render(){
@@ -54,7 +58,17 @@ class App extends React.Component {
         }
       </div> */}
       <Switch>
-        <Route exact path='/'>
+         <Route exact path='/'>
+          <div className='App'>
+            <SignIn getLocations={this.getLocations}/>
+          </div>
+        </Route>
+         <Route  path='/signup'>
+          <div className='App'>
+            <SignUp getLocations={this.getLocations}/>
+          </div>
+        </Route>
+        <Route  path='/home'>
           <div className='App'>
             <Home getLocations={this.getLocations}/>
           </div>
@@ -66,12 +80,18 @@ class App extends React.Component {
         </Route>
         <Route path='/locations'>
           <div className="App">
-            <Locations locations={this.state.locations}/>
+            <Locations getLocations={this.getLocations} 
+            locations={this.state.userLocation}/>
           </div>
         </Route>
         <Route path='/payment'>
           <div className="App">
             <Payment />
+          </div>
+        </Route>
+        <Route path='/confirmation'>
+          <div className="App">
+            <Confirmation />
           </div>
         </Route>
       </Switch>

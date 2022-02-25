@@ -1,3 +1,6 @@
+import  React from 'react';
+import nodeApi from '../../apis/nodeApi'
+
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import FoundPlaces from '../../components/FoundPlaces/FoundPlaces';
@@ -66,47 +69,77 @@ const locationsArray = [{
   "cost": 4,
   "availability": true
 }]
-const Locations = ({locations}) => {
+class Locations extends React.Component {
+    //const [loaded, toggleLoaded] = useState(false)
+    constructor(){
+        super();
+        this.state = {
+            isLoaded: false,
+            locations: [],
+            userLocation: ''
+        }
+    }
+
+     onSearchLocation =  () => {
+        nodeApi.get('/api/sort/duration',{
+             params: {
+                location: this.state.userLocation
+            }
+        }).then(res => {
+            console.log('res location',res)
+           this.setState({locations: res.data, isloaded: true})});
+    }
+     onUserInput = (input) => {
+        console.log(input)
+        this.setState({userLocation: input})
+        // need to pass this to app then to locations then to 
+        // custominput to make it default value
+    }
+    componentDidMount(){
+          nodeApi.get('/api/sort/duration',{
+             params: {
+                location: this.props.locations
+            }
+        }).then(res => {
+            console.log('res location',res)
+           this.setState({locations: res.data, isloaded: true})});
+    }
+    render(){
     return (
         <div className='page'>
             {/* <img src={carLogo}  alt='car' style={{ height: '10em'}}/> */}
             
             <Container>
                 <Row style={{ margin: '1em 0 1.5em 0'}}>
-                    <Col sm={8}><CustomInput inputText='Enter Location' /></Col>
-                    <Col sm={4}><CustomButton buttonText='Search' /></Col>
+                    <Col sm={8}><CustomInput onUserInput={this.onUserInput} inputText='Enter Location' /></Col>
+                    <Col sm={4}><CustomButton onBtnClick={this.onSearchLocation} buttonText='Search' /></Col>
                 </Row>
                 <Row>
                     <p style={{color: '#3C8CBF', fontWeight: '600', fontSize: '1.5em'}}>
                         We found some places for you...</p> 
                 </Row>
                 {
-                    locationsArray.map(item => {
+                    true ?
+                   ( this.state.locations.map(item => {
                         return (
-                            <Row>
+                            <Row style={{textAlign: 'center'}}>
                                 <Col>
-                                    <FoundPlaces location={item.location}
+                                    <FoundPlaces 
+                                        location={item.location}
                                         freeSpaces={item["free-spaces"]}
                                         cost={item.cost}
+                                        durationInMin={item.durationInMin}
+                                        key={item.location}
                                  /></Col>
                             </Row>)
-                    })
+                        })
+                     ) : 'Loading'
                 }
-                
-                 {/* <Row>
-                    <Col><FoundPlaces /></Col>
-                </Row> <Row>
-                    <Col><FoundPlaces /></Col>
-                </Row> <Row>
-                    <Col><FoundPlaces /></Col>
-                </Row> <Row>
-                    <Col><FoundPlaces /></Col>
-                </Row> <Row>
-                    <Col><FoundPlaces /></Col>
-                </Row> */}
+            
             </Container>
         </div>
     )
+            }
 }
 
 export default Locations

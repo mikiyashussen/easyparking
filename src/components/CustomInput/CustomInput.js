@@ -4,9 +4,13 @@ import InputGroup from 'react-bootstrap/InputGroup'
 
 import './CustomInput.css'
 
-const CustomInput = ({inputText, onUserInput}) => {
+const CustomInput = ({inputText,id, onUserInput}) => {
     const getInputs = (event) => {
-        onUserInput(event.target.value)
+        console.log(event.target.id);
+        onUserInput({
+            id: event.target.id,
+            value: event.target.value
+        });
     }
     return (
         <div className='inputs'>
@@ -14,6 +18,7 @@ const CustomInput = ({inputText, onUserInput}) => {
               {/* <InputGroup.Text id="basic-addon1"></InputGroup.Text> */}
                 <FormControl
                 placeholder={inputText}
+                id={id}
                 onChange = {getInputs}
                 aria-label={inputText}
                 aria-describedby="basic-addon1"
