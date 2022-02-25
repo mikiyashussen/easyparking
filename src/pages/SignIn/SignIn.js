@@ -61,7 +61,7 @@ class SignIn extends React.Component{
                     <Col><CustomInput id='email' inputText='Email' onUserInput={this.onUserInput} /></Col>
                 </Row>
                 <Row>
-                    <Col><CustomInput id='password' inputText='Password' onUserInput={this.onUserInput} /></Col>
+                    <Col><CustomInput id='password' inputText='Password' type='password' onUserInput={this.onUserInput} /></Col>
                 </Row>
                     {/* needs better implementation of time selection here */}
                 

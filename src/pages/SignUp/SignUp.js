@@ -69,19 +69,19 @@ class SignUp extends React.Component{
                Welcome to EasyParking..</p> 
             <Container>
                 <Row>
-                    <Col><CustomInput id='firstName' inputText='firstName' onUserInput={this.onUserInput} /></Col>
+                    <Col><CustomInput id='firstName' inputText='FirstName' onUserInput={this.onUserInput} /></Col>
                 </Row>
                 <Row>
-                    <Col><CustomInput id='lastName' inputText='lastName' onUserInput={this.onUserInput} /></Col>
+                    <Col><CustomInput id='lastName' inputText='LastName' onUserInput={this.onUserInput} /></Col>
                 </Row>
                 <Row>
                     <Col><CustomInput id='email' inputText='Email' onUserInput={this.onUserInput} /></Col>
                 </Row>
                     <Row>
-                    <Col><CustomInput id='plateNumber' inputText='plateNumber' onUserInput={this.onUserInput} /></Col>
+                    <Col><CustomInput id='plateNumber' inputText='PlateNumber' onUserInput={this.onUserInput} /></Col>
                 </Row>
                     <Row>
-                    <Col><CustomInput id='password' inputText='password' onUserInput={this.onUserInput} /></Col>
+                    <Col><CustomInput id='password' inputText='Password' type='password' onUserInput={this.onUserInput} /></Col>
                 </Row>
                     {/* needs better implementation of time selection here */}
                 

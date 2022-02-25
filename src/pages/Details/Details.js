@@ -52,7 +52,7 @@ const Details = () => {
                 </Row>
                 <Row>
                     <Col>
-                      <Link to="/confirmation">
+                      <Link to="/payment">
                           <CustomButton buttonText='Next' onBtnClick={onNext} />
                     </Link>
                     </Col>
