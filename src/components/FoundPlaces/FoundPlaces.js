@@ -9,12 +9,13 @@ import Col from 'react-bootstrap/Col';
 
 import './FoundPlaces.css'
 
-const FoundPlaces = ({location, freeSpaces, cost, durationInMin}) => {
+const FoundPlaces = ({location, freeSpaces, cost, durationInMin, getSelectedLocation}) => {
 
 
 
     const onBook = () => {
-        console.log('Book btn clicked')
+        console.log('Location', location)
+        getSelectedLocation(location)
          nodeApi.post('/user/book/',{
            location: location
         }).then(res => {
@@ -38,7 +39,7 @@ const FoundPlaces = ({location, freeSpaces, cost, durationInMin}) => {
                         </div>
                     </Col>
                     <Col>
-                    <Link to='/payment'>
+                    <Link to='/details'>
                         <CustomButton buttonText='Book' onBtnClick={onBook}/>
                     </Link>
                     </Col>

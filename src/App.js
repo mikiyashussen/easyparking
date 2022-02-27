@@ -34,7 +34,9 @@ class App extends React.Component {
       userLocation: {}
     }
   }
-
+  getSelectedLocation = (location) => {
+    this.setState({selectedLocation: location})
+  }
   getLocations = (locations) => {
     console.log('locations', locations)
     this.setState({userLocation: locations})
@@ -81,7 +83,8 @@ class App extends React.Component {
         <Route path='/locations'>
           <div className="App">
             <Locations getLocations={this.getLocations} 
-            locations={this.state.userLocation}/>
+            locations={this.state.userLocation}
+            sendSelectedLocationToApp={this.getSelectedLocation}/>
           </div>
         </Route>
         <Route path='/payment'>
@@ -91,7 +94,7 @@ class App extends React.Component {
         </Route>
         <Route path='/confirmation'>
           <div className="App">
-            <Confirmation />
+            <Confirmation selectedLocation={this.state.selectedLocation}/>
           </div>
         </Route>
       </Switch>

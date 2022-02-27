@@ -6,3 +6,17 @@
     text-align: center;
 }
 
+.confirmationPage a {
+    text-decoration: none;
+    color: #ffffff;
+    background: blue;
+    /* padding-left: 2em;
+    padding-right: 2em; */
+    padding: 0.5em 4em 0.5em 4em;
+    border-radius: 8px;
+    width: 5em;
+}
+
+.confirmationPage a:hover {
+    color: #ffffff;
+}

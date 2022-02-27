@@ -87,13 +87,17 @@ class Locations extends React.Component {
             }
         }).then(res => {
             console.log('res location',res)
-           this.setState({locations: res.data, isloaded: true})});
+           this.setState({locations: locationsArray, isloaded: true})});
     }
      onUserInput = (input) => {
         console.log(input)
         this.setState({userLocation: input})
         // need to pass this to app then to locations then to 
         // custominput to make it default value
+    }
+    getSelectedLocation = (location) => {
+      console.log('lcoation', location)
+      this.props.sendSelectedLocationToApp(location)
     }
     componentDidMount(){
           nodeApi.get('/api/sort/duration',{
@@ -102,7 +106,7 @@ class Locations extends React.Component {
             }
         }).then(res => {
             console.log('res location',res)
-           this.setState({locations: res.data, isloaded: true})});
+           this.setState({locations: locationsArray, isloaded: true})});
     }
     render(){
     return (
@@ -130,6 +134,7 @@ class Locations extends React.Component {
                                         cost={item.cost}
                                         durationInMin={item.durationInMin}
                                         key={item.location}
+                                        getSelectedLocation={this.getSelectedLocation}
                                  /></Col>
                             </Row>)
                         })

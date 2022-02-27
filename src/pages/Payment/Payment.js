@@ -30,7 +30,7 @@ const Payment = () => {
                 </Row>
                 <Row>
                     <Col>
-                    <Link to='/details'>
+                    <Link to='/confirmation'>
                         <CustomButton buttonText='Confirm' /> 
                     </Link>
                    </Col>
