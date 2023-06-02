@@ -1,0 +1,18 @@
+version: 2.1  #circleci version
+jobs:    # List of jobs we want to run
+  build:    # Job name - can give a name that you want
+    docker:   # Environment where the jobs will be run ( or the compute source)
+      - image: circleci/node@4.7   # what image or runtime env these jobs run on
+    steps:
+      - run: echo "Hello World!"
+  print_hi:    # Job name - can give a name that you want
+    docker:   # Environment where the jobs will be run ( or the compute source)
+      - image: circleci/node@4.7   # what image or runtime env these jobs run on
+    steps:
+      - run: echo "Hi There!"
+workflows:
+  version: 2
+  build_hi_there:
+    jobs:
+      - build
+      - print_hi
